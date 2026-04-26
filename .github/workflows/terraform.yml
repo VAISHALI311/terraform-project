@@ -14,15 +14,15 @@ jobs:
         working-directory: environments/qa
 
     steps:
-      # 1. Checkout code
+      # Checkout repo
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Setup Terraform
+      # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      # 3. Configure AWS credentials
+      # AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -30,11 +30,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      # 4. Terraform Init
+      # Terraform Init
       - name: Terraform Init
         run: terraform init
 
-      # 5. Terraform Plan
+      # Terraform Plan
       - name: Terraform Plan
         run: terraform plan
         env:
@@ -44,7 +44,7 @@ jobs:
           TF_VAR_instance_type: t2.micro
           TF_VAR_key_pair_name: terraform-qa-key
 
-      # 6. Terraform Apply
+      # Terraform Apply
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
