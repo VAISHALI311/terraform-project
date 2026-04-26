@@ -22,7 +22,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      # AWS credentials
+      # AWS Credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -41,7 +41,7 @@ jobs:
           TF_VAR_vpc_id: vpc-04253ce5277780462
           TF_VAR_subnet_ids: '["subnet-01032c216ab2a152f"]'
           TF_VAR_instance_count: 1
-          TF_VAR_instance_type: t2.micro
+          TF_VAR_instance_type: t3.small
           TF_VAR_key_pair_name: terraform-qa-key
 
       # Terraform Apply
@@ -51,5 +51,5 @@ jobs:
           TF_VAR_vpc_id: vpc-04253ce5277780462
           TF_VAR_subnet_ids: '["subnet-01032c216ab2a152f"]'
           TF_VAR_instance_count: 1
-          TF_VAR_instance_type: t2.micro
+          TF_VAR_instance_type: t3.small
           TF_VAR_key_pair_name: terraform-qa-key
